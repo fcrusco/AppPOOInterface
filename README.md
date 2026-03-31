@@ -1,54 +1,54 @@
-Payment System - OOP & Dependency Injection
-Este projeto demonstra a aplicação prática de conceitos avançados de Programação Orientada a Objetos (POO) em C#, focando em desacoplamento e extensibilidade através de Interfaces e Injeção de Dependência.
+# Sistema de Pagamentos - POO & Injeção de Dependência
 
-🇧🇷 Português
-Descrição
-O projeto simula um sistema de pagamentos onde a classe Pedido não conhece os detalhes de implementação das formas de pagamento (Cartão, Boleto ou Bitcoin). Isso é possível graças à interface IPagavel, que define um contrato obrigatório.
+Este projeto demonstra a aplicação prática de conceitos avançados de Programação Orientada a Objetos (POO) em C#, focando em desacoplamento e extensibilidade através de Interfaces e Injeção de Dependência via Construtor.
 
-Conceitos Aplicados
-Interface: Define o contrato IPagavel para garantir que qualquer forma de pagamento possua os métodos necessários.
+---
 
-Abstração: Uso de PagamentoBase para evitar repetição de código (DRY) e compartilhar atributos comuns (Valor, Data).
+## 🇧🇷 Português
 
-Polimorfismo: A classe Pedido trata diferentes objetos de forma genérica.
+### 📝 Descrição
+O projeto simula um fluxo de e-commerce onde a classe `Pedido` é totalmente independente das implementações concretas de pagamento. Seja por **Cartão**, **Boleto** ou **Bitcoin**, o `Pedido` apenas exige que o objeto recebido cumpra o contrato definido pela interface `IPagavel`.
 
-Injeção de Dependência (DI): A dependência é injetada via construtor, permitindo que o sistema seja extensível sem alterar o núcleo da regra de negócio (Open/Closed Principle).
+### 🚀 Pontos Fortes do Design
+* **Desacoplamento:** A classe `Pedido` não sabe *como* o pagamento é feito, apenas *que* ele deve ser processado.
+* **Injeção de Dependência (DI):** A forma de pagamento é injetada no construtor do `Pedido`, permitindo trocar a estratégia de pagamento em tempo de execução.
+* **Open/Closed Principle (SOLID):** O sistema está **aberto para extensão** (podemos adicionar Pix, por exemplo) mas **fechado para alteração** (não precisamos mexer na classe `Pedido` para isso).
 
+---
 
----------------------------------------------------------
-🇺🇸 English
-Description
-This project demonstrates a payment system where the Pedido (Order) class is decoupled from specific payment implementations (Credit Card, Bank Slip, or Bitcoin). This is achieved through the IPagavel interface, which establishes a formal contract.
+## 🇺🇸 English
 
-Key Concepts
-Interface: Defines the IPagavel contract to ensure every payment method implements required behaviors.
+### 📝 Description
+This project demonstrates a payment workflow where the `Pedido` (Order) class is completely independent of specific payment implementations. Whether using **Credit Card**, **Bank Slip**, or **Bitcoin**, the `Pedido` class only requires the object to fulfill the contract defined by the `IPagavel` interface.
 
-Abstraction: Utilizes PagamentoBase to prevent code duplication (DRY) and manage shared attributes (Amount, Date).
+### 🚀 Design Highlights
+* **Decoupling:** The `Pedido` class doesn't know *how* the payment is processed, only *that* it must be processed.
+* **Dependency Injection (DI):** The payment method is injected via the `Pedido` constructor, allowing for easy swapping of payment strategies at runtime.
+* **Open/Closed Principle (SOLID):** The system is **open for extension** (e.g., adding Pix) but **closed for modification** (no changes needed in the `Pedido` class).
 
-Polymorphism: The Pedido class interacts with different payment types through a generic reference.
+---
 
-Dependency Injection (DI): Dependencies are injected via constructor, ensuring the system is extensible without modifying core business logic (Open/Closed Principle).
+## 🇪🇸 Español
 
+### 📝 Descripción
+Este proyecto demuestra un flujo de pago donde la clase `Pedido` es totalmente independiente de las implementaciones concretas. Ya sea mediante **Tarjeta**, **Boleto** o **Bitcoin**, la clase `Pedido` solo exige que el objeto cumpla con el contrato definido por la interfaz `IPagavel`.
 
----------------------------------------------------------
-🇪🇸 Español
-Descripción
-Este proyecto ilustra un sistema de pagos donde la clase Pedido (Pedido) está desacoplada de las implementaciones específicas de pago (Tarjeta, Boleto o Bitcoin). Esto se logra mediante la interfaz IPagavel, que define un contrato obligatorio.
+### 🚀 Aspectos Destacados del Diseño
+* **Desacoplamiento:** La clase `Pedido` no sabe *cómo* se procesa el pago, solo *que* debe procesarse.
+* **Inyección de Dependencia (DI):** El método de pago se inyecta a través del constructor de `Pedido`, permitiendo cambiar las estrategias de pago fácilmente.
+* **Principio de Abierto/Cerrado (SOLID):** El sistema está **abierto para extensión** (ej. añadir Pix) pero **cerrado para modificación** (no es necesario cambiar la clase `Pedido`).
 
-Conceptos Clave
-Interfaz: Define el contrato IPagavel para garantizar que cualquier método de pago cumpla con los comportamientos requeridos.
+---
 
-Abstracción: Uso de PagamentoBase para evitar la duplicación de código (DRY) y compartir atributos comunes (Valor, Fecha).
+## 🛠️ Tecnologias / Stack
+* **Language:** C#
+* **Framework:** .NET
+* **Pattern:** Dependency Injection (Constructor Injection)
+* **Principles:** SOLID (Single Responsibility, Open/Closed, Dependency Inversion)
 
-Polimorfismo: La clase Pedido trata diferentes objetos de manera genérica.
+---
 
-Inyección de Dependencia (DI): La dependencia se inyecta a través del constructor, permitiendo que el sistema sea extensible sin alterar la lógica de negocio principal (Principio de Abierto/Cerrado).
-
-🛠️ Tecnologias / Technologies / Tecnologías
-C#
-
-.NET
-OOP Principles (SOLID)
-
-🚀 Extensibilidade / Extensibility
-Para adicionar novas formas de pagamento (ex: Pix), basta criar uma nova classe que herde de PagamentoBase e implemente IPagavel. A classe Pedido não precisa ser alterada.
+## 📂 Estrutura de Pastas / Folder Structure
+* `/Interface`: Contém a `IPagavel` (O Contrato).
+* `/Model`: Contém a `PagamentoBase` (Abstração) e as classes concretas.
+* `Program.cs`: Ponto de entrada com o menu de decisão e injeção da dependência.
